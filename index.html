@@ -33,43 +33,56 @@
     </section>
 
     <section class="photo-section" id="photos">
-      <!-- <p class="section-kicker">Prototype Photos</p> -->
-      <!-- <h2 class="section-title">WhoopTag Prototype Gallery</h2> -->
-
-      <div class="slideshow-container">
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img src="images/prototypes/1.png" alt="WhoopTag prototype photo" />
-          <!-- <div class="text">WhoopTag prototype mounted on a tiny whoop.</div> -->
+        <div class="photo-layout">
+          <div class="carousel-column">
+            <div class="slideshow-container">
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="images/prototypes/1.png" alt="WhoopTag prototype photo" />
+              </div>
+      
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="images/prototypes/2.png" alt="Close-up of the WhoopTag PCB" />
+              </div>
+      
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="images/prototypes/3.png" alt="WhoopTag infrared receiver layout" />
+              </div>
+      
+              <button class="prev" type="button" onclick="plusSlides(-1)" aria-label="Previous photo">
+                &#10094;
+              </button>
+      
+              <button class="next" type="button" onclick="plusSlides(1)" aria-label="Next photo">
+                &#10095;
+              </button>
+            </div>
+      
+            <div class="dot-row">
+              <button class="dot" type="button" onclick="currentSlide(1)" aria-label="Show photo 1"></button>
+              <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Show photo 2"></button>
+              <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Show photo 3"></button>
+            </div>
+          </div>
+      
+          <aside class="about-card">
+            <!-- <p class="section-kicker">Prototype Photos</p> -->
+            <h2 class="section-title">What is WhoopTag?</h2>
+      
+            <p>
+              WhoopTag is a small PCB for tiny whoop drones that allows you to play laser tag against other whoops. 
+              It adds an IR emitter, IR receivers, and Betaflight OSD integration. 
+            </p>
+      
+            <p>
+              The goal is to make it easy to mount on existing whoop stacks, connect to the flight
+              controller, and play.
+            </p>
+          </aside>
         </div>
-
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="images/prototypes/2.png" alt="Close-up of the WhoopTag PCB" />
-          <!-- <div class="text">Close-up of the WhoopTag PCB.</div> -->
-        </div>
-
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="images/prototypes/3.png" alt="WhoopTag infrared receiver layout" />
-          <!-- <div class="text">IR receiver layout for wide hit detection.</div> -->
-        </div>
-
-        <button class="prev" type="button" onclick="plusSlides(-1)" aria-label="Previous photo">
-          &#10094;
-        </button>
-
-        <button class="next" type="button" onclick="plusSlides(1)" aria-label="Next photo">
-          &#10095;
-        </button>
-      </div>
-
-      <div class="dot-row">
-        <button class="dot" type="button" onclick="currentSlide(1)" aria-label="Show photo 1"></button>
-        <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Show photo 2"></button>
-        <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Show photo 3"></button>
-      </div>
-    </section>
+      </section>
 
     <div class="section-divider"></div>
 
