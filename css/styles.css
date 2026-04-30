@@ -164,17 +164,17 @@ a {
 }
 
 .page {
-  padding-top: clamp(32px, 5vw, 44px);
-  padding-bottom: 80px;
+  /* padding-top: clamp(0px, 5vw, 0px); */
+  padding-bottom: 15px;
 }
 
 .hero-title {
   max-width: 100%;
   margin: 0;
   font-size: clamp(39px, 4.5vw, 50px);
-  line-height: 1.24;
+  line-height: 1;
   font-weight: 800;
-  letter-spacing: -1.8px;
+  /* letter-spacing: 0px; */
 }
 
 .hero-title .accent {
@@ -182,7 +182,7 @@ a {
 }
 
 .hero-subtitle {
-  margin: 14px 0 0;
+  margin: 5px 0 0;
   color: var(--muted);
   font-size: clamp(18px, 3vw, 22px);
 }
@@ -416,7 +416,7 @@ a {
 .signup-card {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 5px;
   padding: clamp(20px, 3vw, 26px);
   background: var(--panel);
   border: 1px solid var(--panel-border);
@@ -528,8 +528,8 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 24px;
-  padding-top: 28px;
-  padding-bottom: 18px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .footer-logo {
@@ -567,8 +567,8 @@ a {
   justify-content: space-between;
   flex-wrap: wrap;
   gap: 12px 20px;
-  padding-top: 14px;
-  padding-bottom: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   border-top: 1px solid #222222;
   font-size: 13px;
   color: var(--muted);
@@ -579,7 +579,7 @@ a {
 }
 
 .checkbox-group {
-  margin-bottom: 11px;
+  margin-bottom: 5px;
 }
 
 .checkbox-option {
