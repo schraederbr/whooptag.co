@@ -5,8 +5,11 @@
   --text: #f4f4f4;
 
   --muted: #bbbbbb;
-  --red: #ff2d3d;
-  --red-dark: #730f16;
+  /* --red: #d60101;
+  --red-dark: #fa2c2c; */
+  --red-logo: #ff2d3d;
+  --red: #fa2c2c;
+  --red-dark: #d60101;
   --input-bg: #080808;
 
   --content-width: 1100px;
@@ -67,7 +70,7 @@ a {
 }
 
 .logo span {
-  color: var(--red);
+  color: var(--red-logo);
 }
 
 .nav {
@@ -85,12 +88,12 @@ a {
 
 .nav-button,
 .button {
-  --color: #f90011;
-  --hover: #ff2d3d;
+  --color: var(--red-dark);
+  --hover: var(--red);
 
-  background: #f90011;
+  background: var(--red);
   color: #ffffff;
-  border: 2px solid #f90011;
+  /* border: 2px solid #f90011; */
   transition: 0.25s;
 }
 
@@ -105,8 +108,8 @@ a {
 .nav-button:focus,
 .button:hover,
 .button:focus {
-  background: #f90011;
-  border-color: #ff2d3d;
+  background: var(--red-dark);
+  /* border-color: #ff2d3d; */
   color: #ffffff;
 }
 
@@ -136,7 +139,7 @@ a {
 
 .raise:hover,
 .raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em #ff2d3d;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--red-dark);;
   transform: translateY(-0.25em);
 }
 
@@ -164,7 +167,7 @@ a {
 }
 
 .page {
-  padding-top: clamp(32px, 5vw, 44px);
+  padding-top: clamp(5px, 5vw, 5px);
   padding-bottom: 80px;
 }
 
@@ -174,11 +177,11 @@ a {
   font-size: clamp(39px, 4.5vw, 50px);
   line-height: 1.24;
   font-weight: 800;
-  letter-spacing: -1.8px;
+  letter-spacing: -2px;
 }
 
 .hero-title .accent {
-  color: var(--red);
+  color: var(--red-logo);
 }
 
 .hero-subtitle {
@@ -211,7 +214,7 @@ a {
 .about-card {
   background: var(--panel);
   border: 1px solid var(--panel-border);
-  border-radius: 14px;
+  border-radius: 10px;
   padding: 3px 10px 0px;
 }
 
@@ -264,7 +267,7 @@ a {
   font-size: 26px;
   line-height: 1.2;
   font-weight: 800;
-  letter-spacing: -0.5px;
+  /* letter-spacing: -0.5px; */
 }
 
 .slideshow-container {
@@ -274,8 +277,8 @@ a {
   margin: 0;
   overflow: hidden;
   background: #090909;
-  border: 1px solid var(--panel-border);
-  border-radius: 14px;
+  /* border: 1px solid var(--panel-border); */
+  /* border-radius: 0px; */
 }
 
 .mySlides {
@@ -500,6 +503,7 @@ a {
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
+  border: 0;
 }
 
 .form-note {
