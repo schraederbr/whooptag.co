@@ -217,7 +217,7 @@ a {
 }
 
 .about-card p {
-  margin: 0 0 14px;
+  margin: 0 0 8px;
   color: var(--muted);
   font-size: 18px;
   line-height: 1.6;
