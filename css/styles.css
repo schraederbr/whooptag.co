@@ -462,7 +462,8 @@ a {
 }
 
 .field-label {
-  margin-bottom: 6px;
+  /* margin-bottom: 6px; */
+  margin: 0 0 6px;
   color: var(--muted);
   font-size: 17px;
   font-weight: 700;
