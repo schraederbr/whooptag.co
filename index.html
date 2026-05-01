@@ -3,7 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <script defer src="https://cloud.umami.is/script.js" data-website-id="78de44c4-a6dc-41e4-8b5e-2eeb49515c1e"></script>
+
+  <script
+    type="module"
+    src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+  </script>
+
   <title>WhoopTag - Laser Tag For Tiny Whoop Drones</title>
 
   <link rel="stylesheet" href="css/styles.css" />
@@ -15,8 +22,6 @@
       <a class="logo" href="#">Whoop<span>Tag</span></a>
 
       <nav class="nav" aria-label="Main navigation">
-        <!-- <a href="#prototypes">Prototypes</a> -->
-        <!-- <a href="#how-to-use">Documentation</a> -->
         <a class="nav-button raise" href="#beta-testers">Get Updates</a>
       </nav>
     </div>
@@ -33,75 +38,147 @@
       </p>
     </section>
 
-<section class="photo-section" id="photos">
-      
-        <div class="photo-layout">
-          <aside class="about-card">
-            <!-- <p class="section-kicker">Prototype Photos</p> -->
-            <h2 class="section-title">What is WhoopTag?</h2>
-      
-            <p>
-              WhoopTag is a small PCB for tiny whoop drones that allows you to play laser tag against other whoops. 
-              It adds an IR emitter, IR receivers, a wireless MCU and integrates with Betaflight OSD. 
-            </p>
-      
-            <p>
-              It mounts on top of 26x26mm AIOs, and is light enough to work on any whoop. 
-            </p>
-          </aside>
-          <div class="carousel-column about-card">
-            <h2 class="section-title">Prototype Gallery</h2>
-            <div class="slideshow-container">
-              <div class="mySlides fade" style="display: block;">
-                <div class="numbertext">1 / 3</div>
-                <img src="images/prototypes/1.jpg" alt="WhoopTag prototype on Air 65">
-              </div>
-      
-              <div class="mySlides fade" style="display: none;">
-                <div class="numbertext">2 / 3</div>
-                <img src="images/prototypes/2.png" alt="WhoopTag PCB Design">
-              </div>
-      
-              <div class="mySlides fade" style="display: none;">
-                <div class="numbertext">3 / 3</div>
-                <img src="images/prototypes/3.jpg" alt="Four WhoopTag boards">
-              </div>
-      
-              <button class="prev" type="button" onclick="plusSlides(-1)" aria-label="Previous photo">
-                ❮
-              </button>
-      
-              <button class="next" type="button" onclick="plusSlides(1)" aria-label="Next photo">
-                ❯
-              </button>
+    <section class="photo-section" id="photos">
+      <div class="photo-layout">
+        <aside class="about-card">
+          <h2 class="section-title">What is WhoopTag?</h2>
+
+          <p>
+            WhoopTag is a small PCB for tiny whoop drones that allows you to play laser tag against other whoops.
+            It adds an IR emitter, IR receivers, a wireless MCU and integrates with the Betaflight OSD.
+          </p>
+
+          <p>
+            It mounts on top of 26x26mm AIOs, and is light enough to work on any whoop.
+            Each board can detect hits, communicate with other WhoopTag boards,
+            and support multiple game modes like tag, team deathmatch, last-whoop-standing, or one-in-the-chamber.
+          </p>
+        </aside>
+
+        <div class="carousel-column " data-gallery data-auto-gallery>
+          <!-- <h2 class="gallery-title">Prototype Gallery</h2> -->
+
+          <div class="slideshow-container">
+            <div class="mySlides fade">
+              <div class="numbertext">1 / 2</div>
+              <img src="images/prototypes/1.jpg" alt="WhoopTag prototype on Air 65">
             </div>
-      
-            <div class="dot-row">
-              <button class="dot active" type="button" onclick="currentSlide(1)" aria-label="Show photo 1"></button>
-              <button class="dot" type="button" onclick="currentSlide(2)" aria-label="Show photo 2"></button>
-              <button class="dot" type="button" onclick="currentSlide(3)" aria-label="Show photo 3"></button>
+
+            <!-- <div class="mySlides fade">
+              <div class="numbertext">2 / 3</div>
+              <img src="images/prototypes/2.png" alt="WhoopTag PCB design">
+            </div> -->
+
+            <div class="mySlides fade">
+              <div class="numbertext">2 / 2</div>
+              <img src="images/prototypes/3.jpg" alt="Four WhoopTag boards">
             </div>
+
+            <button class="prev" type="button" data-gallery-prev aria-label="Previous photo">
+              &#10094;
+            </button>
+
+            <button class="next" type="button" data-gallery-next aria-label="Next photo">
+              &#10095;
+            </button>
           </div>
-      
-          
+
+          <div class="dot-row">
+            <button class="dot" type="button" data-gallery-dot aria-label="Show photo 1"></button>
+            <button class="dot" type="button" data-gallery-dot aria-label="Show photo 2"></button>
+            <!-- <button class="dot" type="button" data-gallery-dot aria-label="Show photo 3"></button> -->
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
+
+    <section class="photo-section" id="models">
+      <div class="photo-layout">
+        
+
+        <div class="carousel-column" data-gallery>
+          <!-- <h2 class="gallery-title">3D Model Gallery</h2> -->
+
+          <div class="slideshow-container">
+            <div class="mySlides fade">
+              <div class="numbertext">v6</div>
+              <model-viewer
+                src="models/v6.glb"
+                alt="WhoopTag prototype V1 3D model"
+                camera-controls
+                auto-rotate
+                disable-zoom
+                shadow-intensity="5"
+                interaction-prompt="none"
+                rotation-per-second="10deg"
+                auto-rotate-delay="0"
+                exposure="0.8">
+                
+              </model-viewer>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">v4</div>
+              <model-viewer
+                src="models/v4.glb"
+                alt="WhoopTag prototype V2 3D model"
+                camera-controls
+                auto-rotate
+                rotation-per-second="10deg"
+                disable-zoom
+                shadow-intensity="1"
+                interaction-prompt="none"
+                exposure="0.8">
+              </model-viewer>
+            </div>
+
+            <div class="mySlides fade">
+              <div class="numbertext">v2</div>
+              <model-viewer
+                src="models/v2.glb"
+                alt="WhoopTag mounted on a tiny whoop 3D model"
+                camera-controls
+                auto-rotate
+                rotation-per-second="10deg"
+                disable-zoom
+                shadow-intensity="1"
+                interaction-prompt="none"
+                exposure="0.8">
+              </model-viewer>
+            </div>
+
+            <button class="prev" type="button" data-gallery-prev aria-label="Previous model">
+              &#10094;
+            </button>
+
+            <button class="next" type="button" data-gallery-next aria-label="Next model">
+              &#10095;
+            </button>
+          </div>
+
+          <div class="dot-row">
+            <button class="dot" type="button" data-gallery-dot aria-label="Show model 1"></button>
+            <button class="dot" type="button" data-gallery-dot aria-label="Show model 2"></button>
+            <button class="dot" type="button" data-gallery-dot aria-label="Show model 3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <div class="section-divider"></div>
 
     <section id="features">
-      <!-- <p class="section-kicker">What's On Board</p> -->
       <h2 class="section-title-features">Features</h2>
 
       <div class="feature-grid">
         <article class="feature-card">
-          <h3>IR Emitter</h3>
-          <p>Tight IR beam. Invisible to the naked eye.</p>
+          <h3>IR Emitter &amp; Receivers</h3>
+          <p>High power IR transmitter and receivers around the board.</p>
         </article>
 
         <article class="feature-card">
-          <h3>360&deg; IR Receivers</h3>
-          <p>Sensors all around the board.</p>
+          <h3>Wireless Communication</h3>
+          <p>Sync hits, player stats, and game data across multiple WhoopTag boards.</p>
         </article>
 
         <article class="feature-card">
@@ -110,39 +187,24 @@
         </article>
 
         <article class="feature-card">
-          <h3>LED Player Indicator</h3>
-          <p>Players can choose a custom color.</p>
+          <h3>Player Status LED</h3>
+          <p>Set a custom player color and show hit feedback during gameplay.</p>
         </article>
 
-        <!-- <article class="feature-card">
-          <h3>Health &amp; Lives System</h3>
-          <p>Configurable HP and lives. Auto-disarms after X hits.</p>
-        </article> -->
-
         <article class="feature-card">
-          <h3>1S+ Compatible</h3>
+          <h3>5V BEC Powered</h3>
           <p>Runs off any 5v BEC with at least 400ma output power.</p>
         </article>
 
-        <!-- <article class="feature-card">
-          <h3>Team Mode</h3>
-          <p>Assign drones to red or blue teams. Toggle friendly fire on or off per session.</p>
-        </article> -->
-
         <article class="feature-card">
           <h3>Game Mode Support</h3>
-          <p>Supports Tag, Deathmatch, and more game formats out of the box.</p>
+          <p>Supports tag, deathmatch, and more.</p>
         </article>
 
         <article class="feature-card">
           <h3>OSD Integration</h3>
           <p>HP and hit count displayed directly in your FPV goggles via Betaflight OSD.</p>
         </article>
-
-        <!-- <article class="feature-card">
-          <h3>Configurable Fire Rate</h3>
-          <p>Adjust shot cooldown and burst mode settings to balance gameplay.</p>
-        </article> -->
       </div>
     </section>
 
@@ -157,7 +219,7 @@
             Join the list to hear when prototypes, test units, or early boards become available.
           </p>
         </div>
-    
+
         <form class="signup-form" id="signup-form" action="#" method="post">
           <label class="field-label" for="name">Your name</label>
           <input
@@ -168,7 +230,7 @@
             placeholder="John Doe"
             required
           />
-    
+
           <label class="field-label" for="email">Your email</label>
           <input
             class="input"
@@ -178,10 +240,10 @@
             placeholder="you@example.com"
             required
           />
-    
+
           <div class="checkbox-group">
             <p class="field-label">I'm interested in</p>
-    
+
             <label class="checkbox-option">
               <input
                 id="testing-interest"
@@ -190,7 +252,7 @@
               />
               Beta testing and giving feedback
             </label>
-    
+
             <label class="checkbox-option">
               <input
                 id="buy-interest"
@@ -200,7 +262,7 @@
               Buying WhoopTag when available
             </label>
           </div>
-    
+
           <label class="field-label" for="message">Optional note</label>
           <textarea
             class="textarea"
@@ -208,32 +270,32 @@
             name="message"
             placeholder="Ex: What kind of testing you can do, what drones you fly, how many boards you might want, etc"
           ></textarea>
-    
+
           <button class="button raise" type="submit">Submit</button>
-    
+
           <p id="signup-status" class="signup-status" aria-live="polite"></p>
         </form>
       </div>
     </section>
-    
+
     <script>
       const signupForm = document.querySelector("#signup-form");
       const signupStatus = document.querySelector("#signup-status");
-    
+
       signupForm.addEventListener("submit", async function (event) {
         event.preventDefault();
-    
+
         const submitButton = signupForm.querySelector("button[type='submit']");
-    
+
         const name = document.querySelector("#name").value.trim();
         const email = document.querySelector("#email").value.trim();
         const testingInterest = document.querySelector("#testing-interest").checked;
         const buyInterest = document.querySelector("#buy-interest").checked;
         const note = document.querySelector("#message").value.trim();
-    
+
         signupStatus.textContent = "Submitting...";
         submitButton.disabled = true;
-    
+
         try {
           const response = await fetch("https://whooptag-signup-api.ben-24a.workers.dev/signup", {
             method: "POST",
@@ -248,23 +310,24 @@
               note: note
             })
           });
-    
+
           const result = await response.json();
-    
+
           if (result.ok) {
             signupForm.reset();
-            signupStatus.textContent = "Thanks, you're on the list.";
+            signupStatus.textContent = "Thanks! You're on the list.";
           } else {
             signupStatus.textContent = result.error || "Something went wrong.";
           }
         } catch (error) {
           signupStatus.textContent = "Could not submit right now.";
         }
-    
+
         submitButton.disabled = false;
       });
     </script>
   </main>
+
   <footer class="site-footer">
     <div class="footer-inner">
       <div>
@@ -273,14 +336,12 @@
           Laser tag hardware for tiny whoop FPV drones.
         </p>
       </div>
-  
+
       <nav class="footer-nav" aria-label="Footer navigation">
-        <!-- <a href="#how-to-use">Documentation</a> -->
-        <!-- <a href="#beta-testers">Become A Tester</a> -->
         <a href="mailto:ben@whooptag.co">Contact</a>
       </nav>
     </div>
-  
+
     <div class="footer-bottom">
       <p>&copy; 2026 WhoopTag. All rights reserved.</p>
       <p>Prototype hardware. Subject to change.</p>

@@ -5,8 +5,6 @@
   --text: #f4f4f4;
 
   --muted: #bbbbbb;
-  /* --red: #d60101;
-  --red-dark: #fa2c2c; */
   --red-logo: #ff2d3d;
   --red: #fa2c2c;
   --red-dark: #d60101;
@@ -93,7 +91,6 @@ a {
 
   background: var(--red);
   color: #ffffff;
-  /* border: 2px solid #f90011; */
   transition: 0.25s;
 }
 
@@ -109,7 +106,6 @@ a {
 .button:hover,
 .button:focus {
   background: var(--red-dark);
-  /* border-color: #ff2d3d; */
   color: #ffffff;
 }
 
@@ -139,7 +135,7 @@ a {
 
 .raise:hover,
 .raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--red-dark);;
+  box-shadow: 0 0.5em 0.5em -0.4em var(--red-dark);
   transform: translateY(-0.25em);
 }
 
@@ -167,7 +163,6 @@ a {
 }
 
 .page {
-  /* padding-top: clamp(0px, 5vw, 0px); */
   padding-bottom: 15px;
 }
 
@@ -177,7 +172,6 @@ a {
   font-size: clamp(39px, 4.5vw, 50px);
   line-height: 1;
   font-weight: 800;
-  /* letter-spacing: 0px; */
 }
 
 .hero-title .accent {
@@ -225,7 +219,7 @@ a {
 .about-card p {
   margin: 0 0 14px;
   color: var(--muted);
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
 }
 
@@ -262,12 +256,18 @@ a {
   font-weight: 800;
 }
 
+.gallery-title {
+  margin: 0px 0px 10px;
+  font-size: 26px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
 .carousel-title {
   margin: 0 0 18px;
   font-size: 26px;
   line-height: 1.2;
   font-weight: 800;
-  /* letter-spacing: -0.5px; */
 }
 
 .slideshow-container {
@@ -277,8 +277,6 @@ a {
   margin: 0;
   overflow: hidden;
   background: #090909;
-  /* border: 1px solid var(--panel-border); */
-  /* border-radius: 0px; */
 }
 
 .mySlides {
@@ -288,13 +286,21 @@ a {
   height: 100%;
 }
 
-.mySlides img {
+.mySlides img,
+.mySlides model-viewer {
   display: block;
   width: 100%;
   height: 100%;
+  background: #090909;
+}
+
+.mySlides img {
   object-fit: contain;
   object-position: center;
-  background: #090909;
+}
+
+.mySlides model-viewer {
+  --poster-color: #090909;
 }
 
 .prev,
@@ -313,6 +319,7 @@ a {
   border-radius: 0 3px 3px 0;
   user-select: none;
   background: rgba(0, 0, 0, 0.45);
+  z-index: 2;
 }
 
 .next {
@@ -341,7 +348,7 @@ a {
 
 .numbertext {
   color: #f2f2f2;
-  font-size: 12px;
+  font-size: 16px;
   padding: 8px 12px;
   position: absolute;
   top: 0;
@@ -600,4 +607,11 @@ a {
   width: 16px;
   height: 16px;
   accent-color: var(--red);
+}
+
+.signup-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
 }
