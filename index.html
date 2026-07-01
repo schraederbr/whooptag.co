@@ -101,6 +101,10 @@
                 camera-controls
                 auto-rotate
                 disable-zoom
+                camera-target="0m 0m 0m"
+                shadow-intensity="0"
+                rotation-per-second="10deg"
+                auto-rotate-delay="0"
                 exposure="0.8">
                 
               </model-viewer>
@@ -363,5 +367,10 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script>
+    document.querySelectorAll('model-viewer').forEach(mv => {
+      mv.interactionPrompt = 'none';
+    });
+  </script>
 </body>
 </html>
