@@ -1,2 +1,2 @@
 # [WhoopTag.co](https://whooptag.co)
-Home of my laser tag drone PCB project
+The website for my my drone laser tag PCB project
