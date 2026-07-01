@@ -427,7 +427,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  padding: clamp(20px, 3vw, 26px);
+  padding: clamp(15px, 3vw, 20px);
   background: var(--panel);
   border: 1px solid var(--panel-border);
   border-radius: 14px;
