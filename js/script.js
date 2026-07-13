@@ -1,204 +1,127 @@
-/**
- * Crossfade carousel.
- *
- * Slides are stacked and swapped by toggling opacity, so there is no sliding
- * motion. Swipe is gesture-based (flick to advance) rather than drag-tracking,
- * since there is nothing to translate under the finger.
- *
- * Markup contract (see index.html):
- *   [data-carousel]                  wrapper
- *     .carousel                      stacking context, tabindex="0" for arrow keys
- *       [data-carousel-track]        direct children are .slide
- *       [data-carousel-counter]      optional "1 / 3" overlay
- *       [data-carousel-prev] / [-next]
- *     [data-carousel-dots]           optional; dots are generated here
- *
- * Optional attributes on the wrapper:
- *   data-carousel-auto               enable autoplay
- *   data-carousel-interval="4000"    autoplay delay in ms
- *   data-carousel-label="photo"      noun used in dot aria-labels
- *
- * Add class="no-swipe" to the track to disable swipe (e.g. model-viewer slides).
- */
-document.querySelectorAll("[data-carousel]").forEach(function (root) {
-  const track = root.querySelector("[data-carousel-track]");
-  if (!track) {
-    return;
+document.querySelectorAll("[data-gallery]").forEach(function (gallery) {
+  let slideIndex = 1;
+  let autoSlideTimer = null;
+  let autoSlideEnabled = gallery.hasAttribute("data-auto-gallery");
+
+  const slides = gallery.getElementsByClassName("mySlides");
+  const dots = gallery.querySelectorAll("[data-gallery-dot]");
+  const prevButton = gallery.querySelector("[data-gallery-prev]");
+  const nextButton = gallery.querySelector("[data-gallery-next]");
+  const interactiveItems = gallery.querySelectorAll("img, model-viewer");
+
+  showSlides(slideIndex);
+
+//   if (autoSlideEnabled) {
+//     startAutoSlides();
+//   }
+
+//   function startAutoSlides() {
+//     if (slides.length <= 1) {
+//       return;
+//     }
+
+//     autoSlideTimer = setInterval(function () {
+//       if (autoSlideEnabled) {
+//         slideIndex += 1;
+//         showSlides(slideIndex);
+//       }
+//     }, 4000);
+//   }
+
+  function stopAutoSlides() {
+    autoSlideEnabled = false;
+
+    if (autoSlideTimer) {
+      clearInterval(autoSlideTimer);
+      autoSlideTimer = null;
+    }
   }
 
-  const slides = Array.from(track.children);
-  if (slides.length === 0) {
-    return;
+  function plusSlides(n) {
+    stopAutoSlides();
+    slideIndex += n;
+    showSlides(slideIndex);
   }
 
-  const viewport = root.querySelector(".carousel");
-  const dotRow = root.querySelector("[data-carousel-dots]");
-  const counter = root.querySelector("[data-carousel-counter]");
-  const prevButton = root.querySelector("[data-carousel-prev]");
-  const nextButton = root.querySelector("[data-carousel-next]");
-
-  const label = root.dataset.carouselLabel || "photo";
-  const interval = Number(root.dataset.carouselInterval) || 4000;
-
-  const SWIPE_THRESHOLD = 40; // px of horizontal travel before it counts
-
-  let index = 0;
-  let autoTimer = null;
-
-  slides[0].classList.add("is-active");
-  slides.forEach(function (slide, i) {
-    slide.setAttribute("aria-hidden", i === 0 ? "false" : "true");
-  });
-
-  // Nothing to page through — hide the chrome and stop here.
-  if (slides.length === 1) {
-    root.setAttribute("data-single", "");
-    return;
+  function currentSlide(n) {
+    stopAutoSlides();
+    slideIndex = n;
+    showSlides(slideIndex);
   }
 
-  // --- Dots -----------------------------------------------------------------
+  function showSlides(n) {
+    let i;
 
-  const dots = slides.map(function (slide, i) {
-    const dot = document.createElement("button");
-    dot.type = "button";
-    dot.className = "dot";
-    dot.setAttribute("aria-label", "Show " + label + " " + (i + 1));
-
-    dot.addEventListener("click", function () {
-      stopAuto();
-      goTo(i);
-    });
-
-    if (dotRow) {
-      dotRow.appendChild(dot);
+    if (slides.length === 0) {
+      return;
     }
 
-    return dot;
-  });
+    if (n > slides.length) {
+      slideIndex = 1;
+    }
 
-  // --- Navigation -----------------------------------------------------------
+    if (n < 1) {
+      slideIndex = slides.length;
+    }
 
-  function goTo(target) {
-    index = (target + slides.length) % slides.length;
-    render();
-  }
+    for (i = 0; i < slides.length; i += 1) {
+      slides[i].style.display = "none";
+    }
 
-  function step(n) {
-    stopAuto();
-    goTo(index + n);
-  }
+    for (i = 0; i < dots.length; i += 1) {
+      dots[i].classList.remove("active");
+    }
 
-  function render() {
-    slides.forEach(function (slide, i) {
-      slide.classList.toggle("is-active", i === index);
-      slide.setAttribute("aria-hidden", i === index ? "false" : "true");
-    });
+    slides[slideIndex - 1].style.display = "block";
 
-    dots.forEach(function (dot, i) {
-      dot.classList.toggle("active", i === index);
-      dot.setAttribute("aria-current", i === index ? "true" : "false");
-    });
-
-    if (counter) {
-      counter.textContent = index + 1 + " / " + slides.length;
+    if (dots[slideIndex - 1]) {
+      dots[slideIndex - 1].classList.add("active");
     }
   }
 
   if (prevButton) {
     prevButton.addEventListener("click", function () {
-      step(-1);
+      plusSlides(-1);
     });
   }
 
   if (nextButton) {
     nextButton.addEventListener("click", function () {
-      step(1);
+      plusSlides(1);
     });
   }
 
-  // --- Keyboard -------------------------------------------------------------
-
-  if (viewport) {
-    viewport.addEventListener("keydown", function (event) {
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        step(-1);
-      } else if (event.key === "ArrowRight") {
-        event.preventDefault();
-        step(1);
-      }
+  dots.forEach(function (dot, index) {
+    dot.addEventListener("click", function () {
+      currentSlide(index + 1);
     });
-  }
-
-  // --- Swipe ----------------------------------------------------------------
-
-  if (viewport && !track.classList.contains("no-swipe")) {
-    let startX = null;
-    let startY = null;
-
-    viewport.addEventListener("pointerdown", function (event) {
-      startX = event.clientX;
-      startY = event.clientY;
-    });
-
-    viewport.addEventListener("pointerup", function (event) {
-      if (startX === null) {
-        return;
-      }
-
-      const dx = event.clientX - startX;
-      const dy = event.clientY - startY;
-
-      startX = null;
-      startY = null;
-
-      // Horizontal intent only — don't hijack a vertical page scroll.
-      if (Math.abs(dx) > SWIPE_THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
-        step(dx < 0 ? 1 : -1);
-      }
-    });
-
-    viewport.addEventListener("pointercancel", function () {
-      startX = null;
-      startY = null;
-    });
-  }
-
-  // --- Autoplay -------------------------------------------------------------
-
-  function startAuto() {
-    if (autoTimer || !root.hasAttribute("data-carousel-auto")) {
-      return;
-    }
-
-    autoTimer = setInterval(function () {
-      if (!document.hidden) {
-        goTo(index + 1);
-      }
-    }, interval);
-  }
-
-  function stopAuto() {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
-    }
-
-    // Any deliberate interaction kills autoplay for good.
-    root.removeAttribute("data-carousel-auto");
-  }
-
-  root.addEventListener("pointerenter", function () {
-    if (autoTimer) {
-      clearInterval(autoTimer);
-      autoTimer = null;
-    }
   });
 
-  root.addEventListener("pointerleave", startAuto);
-  root.addEventListener("pointerdown", stopAuto);
-  root.addEventListener("focusin", stopAuto);
+  interactiveItems.forEach(function (item) {
+    item.addEventListener("pointerdown", function () {
+      stopAutoSlides();
+    });
+  });
 
-  render();
-  startAuto();
+  const slideshowContainer = gallery.querySelector(".slideshow-container");
+
+  if (slideshowContainer) {
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    slideshowContainer.addEventListener("touchstart", function (event) {
+      touchStartX = event.changedTouches[0].clientX;
+      touchStartY = event.changedTouches[0].clientY;
+    }, { passive: true });
+
+    slideshowContainer.addEventListener("touchend", function (event) {
+      const deltaX = event.changedTouches[0].clientX - touchStartX;
+      const deltaY = event.changedTouches[0].clientY - touchStartY;
+
+      // Only treat as a swipe if mostly horizontal and long enough
+      if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY)) {
+        plusSlides(deltaX < 0 ? 1 : -1);
+      }
+    }, { passive: true });
+  }
 });
