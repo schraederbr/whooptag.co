@@ -270,37 +270,66 @@ a {
   font-weight: 800;
 }
 
-.slideshow-container {
+/* --- Carousel ---------------------------------------------------------- */
+
+/* Slides are stacked and crossfaded. touch-action: pan-y keeps vertical page
+   scrolling native while horizontal drags belong to the swipe handler. */
+.carousel {
+  position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  position: relative;
-  margin: 0;
   overflow: hidden;
   background: #090909;
+  touch-action: pan-y;
 }
 
-.mySlides {
-  display: none;
+.carousel:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: -2px;
+}
+
+.carousel-track {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.mySlides img,
-.mySlides model-viewer {
+.slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+}
+
+.slide.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.slide img,
+.slide model-viewer {
   display: block;
   width: 100%;
   height: 100%;
   background: #090909;
 }
 
-.mySlides img {
+.slide img {
   object-fit: contain;
   object-position: center;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
-.mySlides model-viewer {
+.slide model-viewer {
   --poster-color: #090909;
+}
+
+/* Model carousel: camera-controls own the drag, so no swipe-to-advance. */
+.carousel-track.no-swipe {
+  touch-action: auto;
 }
 
 .prev,
@@ -308,13 +337,13 @@ a {
   cursor: pointer;
   position: absolute;
   top: 50%;
+  transform: translateY(-50%);
   width: auto;
   padding: 16px;
-  margin-top: -22px;
   color: #ffffff;
   font-weight: bold;
   font-size: clamp(14px, 3vw, 24px);
-  transition: 0.2s ease;
+  transition: background-color 0.2s ease;
   border: 0;
   border-radius: 0 3px 3px 0;
   user-select: none;
@@ -328,9 +357,17 @@ a {
 }
 
 .prev:hover,
-.next:hover {
+.next:hover,
+.prev:focus-visible,
+.next:focus-visible {
   background: var(--red);
   color: #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .slide {
+    transition: none;
+  }
 }
 
 .text {
@@ -381,19 +418,17 @@ a {
   background-color: var(--red);
 }
 
-.fade {
-  animation-name: fade;
-  animation-duration: 0.6s;
+.dot:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
 }
 
-@keyframes fade {
-  from {
-    opacity: 0.45;
-  }
-
-  to {
-    opacity: 1;
-  }
+/* Single-slide gallery: no chrome needed. */
+.carousel-column[data-single] .dot-row,
+.carousel-column[data-single] .prev,
+.carousel-column[data-single] .next,
+.carousel-column[data-single] .numbertext {
+  display: none;
 }
 
 .feature-grid {

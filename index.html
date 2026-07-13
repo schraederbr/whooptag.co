@@ -58,39 +58,33 @@
           </p>
         </aside> -->
 
-        <div class="carousel-column " data-gallery data-auto-gallery>
-          <!-- <h2 class="gallery-title">Prototype Gallery</h2> -->
+        <!-- Add data-carousel-auto to enable autoplay. Optional: data-carousel-interval="4000" -->
+        <div class="carousel-column" data-carousel data-carousel-label="photo">
+          <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Prototype gallery" tabindex="0">
 
-          <div class="slideshow-container">
-            <div class="mySlides fade">
-              <div class="numbertext">1 / 2</div>
-              <img src="images/prototypes/1.jpg" alt="WhoopTag prototype on Air 65">
+            <!-- Add or remove a .slide to change the gallery. Dots build themselves. -->
+            <div class="carousel-track" data-carousel-track>
+              <figure class="slide">
+                <img src="images/prototypes/1.jpg" alt="WhoopTag prototype on Air 65" decoding="async">
+              </figure>
+
+              <figure class="slide">
+                <img src="images/prototypes/2.jpg" alt="Four WhoopTag boards" loading="lazy" decoding="async">
+              </figure>
             </div>
 
-            <!-- <div class="mySlides fade">
-              <div class="numbertext">2 / 3</div>
-              <img src="images/prototypes/2.png" alt="WhoopTag PCB design">
-            </div> -->
+            <div class="numbertext" data-carousel-counter aria-hidden="true"></div>
 
-            <div class="mySlides fade">
-              <div class="numbertext">2 / 2</div>
-              <img src="images/prototypes/2.jpg" alt="Four WhoopTag boards">
-            </div>
-
-            <button class="prev" type="button" data-gallery-prev aria-label="Previous photo">
+            <button class="prev" type="button" data-carousel-prev aria-label="Previous photo">
               &#10094;
             </button>
 
-            <button class="next" type="button" data-gallery-next aria-label="Next photo">
+            <button class="next" type="button" data-carousel-next aria-label="Next photo">
               &#10095;
             </button>
           </div>
 
-          <div class="dot-row">
-            <button class="dot" type="button" data-gallery-dot aria-label="Show photo 1"></button>
-            <button class="dot" type="button" data-gallery-dot aria-label="Show photo 2"></button>
-            <!-- <button class="dot" type="button" data-gallery-dot aria-label="Show photo 3"></button> -->
-          </div>
+          <div class="dot-row" data-carousel-dots></div>
         </div>
       </div>
     </section>
@@ -110,77 +104,77 @@
                 
               </model-viewer>
     </div> -->
-    <!-- <section class="photo-section" id="models">
+    <!--
+      Model carousel, ported to the new markup. Note: model-viewer camera-controls
+      swallow drag, so swipe-to-advance would fight with orbiting the model. The
+      no-swipe class on the track turns swipe off for this one; arrows and dots only.
+
+    <section class="photo-section" id="models">
       <div class="photo-layout">
-        
+        <div class="carousel-column" data-carousel data-carousel-label="model">
+          <div class="carousel" role="region" aria-roledescription="carousel" aria-label="Model gallery" tabindex="0">
 
-        <div class="carousel-column" data-gallery>
+            <div class="carousel-track no-swipe" data-carousel-track>
+              <figure class="slide">
+                <model-viewer
+                  src="models/v6.glb"
+                  alt="WhoopTag prototype V1 3D model"
+                  camera-controls
+                  auto-rotate
+                  disable-zoom
+                  shadow-intensity="5"
+                  interaction-prompt="none"
+                  rotation-per-second="10deg"
+                  auto-rotate-delay="0"
+                  exposure="0.8">
+                </model-viewer>
+              </figure>
 
-          <div class="slideshow-container">
-            <div class="mySlides fade">
-              <div class="numbertext">v6</div>
-              <model-viewer
-                src="models/v6.glb"
-                alt="WhoopTag prototype V1 3D model"
-                camera-controls
-                auto-rotate
-                disable-zoom
-                shadow-intensity="5"
-                interaction-prompt="none"
-                rotation-per-second="10deg"
-                auto-rotate-delay="0"
-                exposure="0.8">
-                
-              </model-viewer>
+              <figure class="slide">
+                <model-viewer
+                  src="models/v4.glb"
+                  alt="WhoopTag prototype V2 3D model"
+                  camera-controls
+                  auto-rotate
+                  rotation-per-second="10deg"
+                  disable-zoom
+                  shadow-intensity="1"
+                  interaction-prompt="none"
+                  exposure="0.8">
+                </model-viewer>
+              </figure>
+
+              <figure class="slide">
+                <model-viewer
+                  src="models/v2.glb"
+                  alt="WhoopTag mounted on a tiny whoop 3D model"
+                  camera-controls
+                  auto-rotate
+                  rotation-per-second="10deg"
+                  disable-zoom
+                  shadow-intensity="1"
+                  interaction-prompt="none"
+                  exposure="0.8">
+                </model-viewer>
+              </figure>
             </div>
 
-            <div class="mySlides fade">
-              <div class="numbertext">v4</div>
-              <model-viewer
-                src="models/v4.glb"
-                alt="WhoopTag prototype V2 3D model"
-                camera-controls
-                auto-rotate
-                rotation-per-second="10deg"
-                disable-zoom
-                shadow-intensity="1"
-                interaction-prompt="none"
-                exposure="0.8">
-              </model-viewer>
-            </div>
+            <div class="numbertext" data-carousel-counter aria-hidden="true"></div>
 
-            <div class="mySlides fade">
-              <div class="numbertext">v2</div>
-              <model-viewer
-                src="models/v2.glb"
-                alt="WhoopTag mounted on a tiny whoop 3D model"
-                camera-controls
-                auto-rotate
-                rotation-per-second="10deg"
-                disable-zoom
-                shadow-intensity="1"
-                interaction-prompt="none"
-                exposure="0.8">
-              </model-viewer>
-            </div>
-
-            <button class="prev" type="button" data-gallery-prev aria-label="Previous model">
+            <button class="prev" type="button" data-carousel-prev aria-label="Previous model">
               &#10094;
             </button>
 
-            <button class="next" type="button" data-gallery-next aria-label="Next model">
+            <button class="next" type="button" data-carousel-next aria-label="Next model">
               &#10095;
             </button>
           </div>
 
-          <div class="dot-row">
-            <button class="dot" type="button" data-gallery-dot aria-label="Show model 1"></button>
-            <button class="dot" type="button" data-gallery-dot aria-label="Show model 2"></button>
-            <button class="dot" type="button" data-gallery-dot aria-label="Show model 3"></button>
-          </div>
+          <div class="dot-row" data-carousel-dots></div>
         </div>
       </div>
-    </section> -->
+    </section>
+    -->
 
     <div class="section-divider"></div>
 
