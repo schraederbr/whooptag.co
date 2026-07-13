@@ -40,9 +40,9 @@
     <div class="section-divider"></div>
     <section class="photo-section" id="photos">
       <div class="photo-layout">
-        <aside class="about-card">
-          <h2 class="section-title">What is WhoopTag?</h2>
-
+        <!-- <aside class="about-card"> -->
+          <!-- <h2 class="section-title">What is WhoopTag?</h2> -->
+<!-- 
           <p>
             WhoopTag is a small PCB for tiny whoop drones that allows you to play laser tag against other whoops.
           </p>
@@ -56,7 +56,7 @@
             Each board can detect hits, communicate with other WhoopTag boards,
             and supports multiple game modes.
           </p>
-        </aside>
+        </aside> -->
 
         <div class="carousel-column " data-gallery data-auto-gallery>
           <!-- <h2 class="gallery-title">Prototype Gallery</h2> -->
@@ -94,7 +94,7 @@
         </div>
       </div>
     </section>
-    <div class="model-card">
+    <!-- <div class="model-card">
       <model-viewer class="single-model"
                 src="models/PCB_v2.glb"
                 alt="WhoopTag prototype V2 3D model"
@@ -109,7 +109,7 @@
                 exposure="0.8">
                 
               </model-viewer>
-    </div>
+    </div> -->
     <!-- <section class="photo-section" id="models">
       <div class="photo-layout">
         
@@ -187,7 +187,13 @@
     <section id="features">
       <h2 class="section-title-features">Features</h2>
 
+      
       <div class="feature-grid">
+
+        <article class="feature-card">
+            <h3>OSD Integration</h3>
+            <p>HP and hit count displayed directly in your FPV goggles via Betaflight OSD.</p>
+        </article>
         <article class="feature-card">
           <h3>IR Emitter &amp; Receivers</h3>
           <p>High power IR transmitter and receivers around the board.</p>
@@ -204,23 +210,19 @@
         </article>
 
         <article class="feature-card">
-          <h3>OSD Integration</h3>
-          <p>HP and hit count displayed directly in your FPV goggles via Betaflight OSD.</p>
+            <h3>External Scoreboard</h3>
+            <p>Use a web browser to view the game scoreboard live.</p>
         </article>
 
-        <article class="feature-card">
-          <h3>Player Status LED</h3>
-          <p>Set a custom player color and show hit feedback during gameplay.</p>
-        </article>
 
         <article class="feature-card">
           <h3>5V BEC Powered</h3>
-          <p>Runs off any 5v BEC with at least 400ma output power.</p>
+          <p>Runs off any 5v BEC with at least 500ma output power.</p>
         </article>
 
         <article class="feature-card">
           <h3>Game Mode Support</h3>
-          <p>Supports tag, deathmatch, and more.</p>
+          <p>Supports lives, deathmatch, and more.</p>
         </article>
 
 
@@ -287,7 +289,7 @@
             class="textarea"
             id="message"
             name="message"
-            placeholder="Ex: What kind of testing you can do, what drones you fly, how many boards you might want, etc"
+            placeholder="Ex: Improvements you'd make, what kind of testing you can do, what drones you fly, how many boards you might want, etc"
           ></textarea>
 
           <button class="button raise" type="submit">Submit</button>

@@ -11,22 +11,22 @@ document.querySelectorAll("[data-gallery]").forEach(function (gallery) {
 
   showSlides(slideIndex);
 
-  if (autoSlideEnabled) {
-    startAutoSlides();
-  }
+//   if (autoSlideEnabled) {
+//     startAutoSlides();
+//   }
 
-  function startAutoSlides() {
-    if (slides.length <= 1) {
-      return;
-    }
+//   function startAutoSlides() {
+//     if (slides.length <= 1) {
+//       return;
+//     }
 
-    autoSlideTimer = setInterval(function () {
-      if (autoSlideEnabled) {
-        slideIndex += 1;
-        showSlides(slideIndex);
-      }
-    }, 4000);
-  }
+//     autoSlideTimer = setInterval(function () {
+//       if (autoSlideEnabled) {
+//         slideIndex += 1;
+//         showSlides(slideIndex);
+//       }
+//     }, 4000);
+//   }
 
   function stopAutoSlides() {
     autoSlideEnabled = false;
