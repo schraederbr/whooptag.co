@@ -186,20 +186,6 @@
     <video class="site-video" muted loop playsinline controls preload="metadata" poster="videos/preview.jpg">
       <source src="videos/ShotsAndMenu.mp4" type="video/mp4">
     </video>
-    <script>
-      const video = document.querySelector(".site-video");
-
-      if (video && !video.dataset.clickBound) {
-        video.dataset.clickBound = "true";
-        video.addEventListener("click", function () {
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
-        });
-      }
-    </script>
     <section id="features">
       <h2 class="section-title-features">Features</h2>
 
