@@ -188,14 +188,17 @@
     </video>
     <script>
       const video = document.querySelector(".site-video");
-    
-      video.addEventListener("click", function () {
-        if (video.paused) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      });
+
+      if (video && !video.dataset.clickBound) {
+        video.dataset.clickBound = "true";
+        video.addEventListener("click", function () {
+          if (video.paused) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }
     </script>
     <section id="features">
       <h2 class="section-title-features">Features</h2>
