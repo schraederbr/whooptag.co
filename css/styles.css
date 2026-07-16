@@ -243,7 +243,7 @@ a {
 }
 
 .section-title-features {
-  margin: -6px 0px 10px;
+  margin: 6px 0px 10px;
   font-size: 26px;
   line-height: 1.2;
   font-weight: 800;
@@ -630,4 +630,12 @@ a {
   height: 100%;
   display: block;
   --interaction-prompt-display: none;
+}
+
+.site-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;   /* optional, matches your cards */
+  background: #090909;
 }
